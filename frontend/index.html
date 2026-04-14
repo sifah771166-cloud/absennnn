@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Absensi Sekolah - CRUD Rekap</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="header">
+        <h1>📋 Absensi Siswa</h1>
+        <p class="date" id="currentDate"></p>
+      </div>
+      
+      <!-- Form Absen Harian -->
+      <div class="form-group">
+        <input type="text" id="nameInput" placeholder="Nama lengkap">
+        <select id="jurusanSelect">
+          <option value="">-- Jurusan --</option>
+          <option value="TKJ">TKJ</option><option value="DKV">DKV</option>
+          <option value="BDP">BDP</option><option value="DPIB">DPIB</option>
+          <option value="TBSM">TBSM</option><option value="TKR">TKR</option>
+        </select>
+        <select id="kelasSelect">
+          <option value="">-- Kelas --</option>
+          <option value="X">X (10)</option><option value="XI">XI (11)</option><option value="XII">XII (12)</option>
+        </select>
+        <button id="absenBtn">✔️ Absen Masuk</button>
+      </div>
+      <div id="message" class="message"></div>
+      
+      <!-- Filter & Tombol Tambah Data -->
+      <div class="filter-box">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+          <h3>🔍 Filter Data Absensi</h3>
+          <button id="openAddModalBtn" class="btn-add"><i class="fas fa-plus"></i> Tambah Data Manual</button>
+        </div>
+        <div class="filter-controls">
+          <select id="filterJurusan">
+            <option value="all">Semua Jurusan</option>
+            <option value="TKJ">TKJ</option><option value="DKV">DKV</option>
+            <option value="BDP">BDP</option><option value="DPIB">DPIB</option>
+            <option value="TBSM">TBSM</option><option value="TKR">TKR</option>
+          </select>
+          <select id="filterKelas">
+            <option value="all">Semua Kelas</option>
+            <option value="X">X (10)</option><option value="XI">XI (11)</option><option value="XII">XII (12)</option>
+          </select>
+        </div>
+      </div>
+      
+      <!-- Tabel Data Absensi dengan Aksi Edit/Hapus -->
+      <div class="riwayat">
+        <h2>📌 Rekap Seluruh Absensi</h2>
+        <div class="table-wrapper">
+          <table id="absensiTable">
+            <thead>
+              <tr><th>Nama</th><th>Jurusan</th><th>Kelas</th><th>Waktu Absen</th><th style="width: 100px;">Aksi</th></tr>
+            </thead>
+            <tbody id="absensiBody"><tr><td colspan="5">Memuat data...</td></tr></tbody>
+          </table>
+        </div>
+        <button id="refreshBtn" class="refresh-btn"><i class="fas fa-sync-alt"></i> Refresh</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal untuk Tambah/Edit Data -->
+  <div id="dataModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3 id="modalTitle">Tambah Data Absensi</h3>
+      <input type="hidden" id="editId" value="">
+      <div class="modal-form">
+        <input type="text" id="modalName" placeholder="Nama lengkap">
+        <select id="modalJurusan">
+          <option value="">-- Jurusan --</option>
+          <option value="TKJ">TKJ</option><option value="DKV">DKV</option>
+          <option value="BDP">BDP</option><option value="DPIB">DPIB</option>
+          <option value="TBSM">TBSM</option><option value="TKR">TKR</option>
+        </select>
+        <select id="modalKelas">
+          <option value="">-- Kelas --</option>
+          <option value="X">X (10)</option><option value="XI">XI (11)</option><option value="XII">XII (12)</option>
+        </select>
+        <input type="datetime-local" id="modalTime" step="1">
+        <button id="modalSaveBtn" class="btn-save">Simpan</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

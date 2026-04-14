@@ -1,0 +1,8 @@
+name = "absennnn"
+main = "backend/index.js"
+compatibility_date = "2025-01-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "absen-db"
+database_id = "e5268b3a-1b47-4645-8151-a61b5d95ea96"  # nanti akan diisi setelah membuat D1
